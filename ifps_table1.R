@@ -16,10 +16,10 @@ df$sibling_atpoic <- ifelse(df$prec_sibling>0,1,0)
 
 
 
-var_list <- c("Gender","Urban"  ,  "RACE", 
+var_list <- c("Gender","Urban", "RACE", 
               "Autumn","Spring","Summer","Winter", 
               "Infant.Atopic.Dermatitis","Infant.Systemic.Antibiotics","Smoking",          
-              "Sibling.FA","prec_sibling","sibling_atpoic",  "siblings",
+              "Sibling.FA","prec_sibling","sibling_atpoic","siblings",
               "First.Born","Parent.atopic.condition"        
               )
 
@@ -44,10 +44,6 @@ print(tab_c, nonnormal = cont_list)
 
 t.test(FA6Y$Antibiotics_During_Pregnancy, FA6Y$Cohort, p.adjust.methods="bonfferoni")
 t.test(FA6Y$Parent_Atopic_Condition, FA6Y$Cohort, p.adjust.methods="bonfferoni")
-
-
-
-
 t.test(FA6Y$Percent_of_Siblings_with_Atopic~FA6Y$Cohort, p.adjust.methods="bonferroni")
 
 p1 <- FA6Y[FA6Y$Cohort==1,"Percent_of_Siblings_with_Atopic"]
@@ -59,11 +55,10 @@ round(p.bonf, 3)
 t.test(FA6Y$Antibiotics_During_Pregnancy~FA6Y$Cohort, p.adjust.methods="bonferroni")
 t.test(FA6Y$Parent_Atopic_Condition~FA6Y$Cohort, p.adjust.methods="bonferroni")
 
-
 wilcox.test(FA6Y$Percent_of_Siblings_with_Atopic~FA6Y$Cohort, pairwise.wilcox.test=FALSE)
 wilcox.test(FA6Y$Number.of.Siblings~FA6Y$Cohort)
-median()
 
+## Effect size calculation
 library(effectsize)
 df$Cohort <- as.factor(df$FA_6y)
 
