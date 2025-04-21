@@ -58,7 +58,7 @@ t.test(FA6Y$Parent_Atopic_Condition~FA6Y$Cohort, p.adjust.methods="bonferroni")
 wilcox.test(FA6Y$Percent_of_Siblings_with_Atopic~FA6Y$Cohort, pairwise.wilcox.test=FALSE)
 wilcox.test(FA6Y$Number.of.Siblings~FA6Y$Cohort)
 
-## Effect size calculation
+## Effect size ##
 library(effectsize)
 df$Cohort <- as.factor(df$FA_6y)
 
@@ -72,9 +72,9 @@ cohens_d(FA6Y$Percent.atopic.sblng~FA6Y$Cohort)
 
 # p-value & effect size for cat. vars: chi-square & cramers_v
 res_list <- c()
-CI_low<- c()
-CI_high<- c()
-p_value<- c()
+CI_low <- c()
+CI_high <- c()
+p_value <- c()
 
 for (i in fac_list) {
   res_list[i] <- c(cramers_v(df[[i]],df$Cohort)$Cramers_v_adjusted)
