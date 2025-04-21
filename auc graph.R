@@ -133,7 +133,7 @@ ggplot(auc_1y, aes(x=value,
 
 
 ############################################ 
-### Statistical test fro results comparison:
+### Statistical test for results comparison:
 
 df$Model <- ifelse(df$variable %in% c("Compact Model 6Y","Compact Validation 6Y"), "Compact 6Y",
                      ifelse(df$variable %in% c("Compact Model 1Y","Compact Validation 1Y"), "Compact 1Y", 
@@ -224,16 +224,6 @@ t_test <- t.test(df[df$variable=="Compact Validation 1Y","value"],df[df$variable
 print(t_test) #  p-value < 2.2e-16
 
 ## Wilcoxon Signed-Rank Test
-wilcoxon_test <- wilcox.test(model_1y, model_6y, paired = TRUE)
-print(wilcoxon_test)
-wilcoxon_test <- wilcox.test(val_1y, val_6y, paired = TRUE)
-print(wilcoxon_test)
-wilcoxon_test <- wilcox.test(model_1y, val_1y, paired = TRUE)
-print(wilcoxon_test)
-wilcoxon_test <- wilcox.test(model_6y, val_6y, paired = TRUE)
-print(wilcoxon_test)
-
-
 wilcox.test(0.8, auc$`Full Model 6Y`, paired = F, alternative ="greater") #p-value = 0.08388
 wilcox.test(0.8, auc$`Compact Model 6Y` , paired = F, alternative ="less") #p-value = 0.7358
 wilcox.test(0.8, auc$`Compact Model 1Y` , paired = F, alternative ="less") #p-value = 0.09915
